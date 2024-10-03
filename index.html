@@ -538,13 +538,10 @@
         },
         filteredMonsters() {
           return this.monsters.filter((monster) => {
-            // Vérifie le nom
             const matchesName = monster.name.toLowerCase().startsWith(this.searchQuery.name.toLowerCase());
 
-            // Vérifie le type
             const matchesType = this.searchQuery.type ? monster.type === this.searchQuery.type : true;
 
-            // Combine toutes les conditions
             return matchesName && matchesType;
           });
         },
@@ -591,7 +588,6 @@
           alertDiv.style.zIndex = "1000";
           alertDiv.style.transition = "opacity 0.5s";
 
-          // Masquer l'alerte après 3 secondes
           setTimeout(() => {
               alertDiv.style.opacity = "0";
               setTimeout(() => {
