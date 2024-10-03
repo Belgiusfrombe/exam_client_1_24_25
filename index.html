@@ -558,6 +558,7 @@
         addOne() {
           // Vérification si les champs ne sont pas remplis
           if (!this.inputMonster.name || !this.inputMonster.type || !this.inputMonster.description || this.inputMonster.attack <= 0 || this.inputMonster.health <= 0) {
+              window.scrollTo(0, 0);
               this.showAlert("Veuillez remplir tous les champs correctement !", "alert");
               return;
           }
@@ -614,7 +615,7 @@
           this.inputMonster = {
             ...this.monsters.find((item) => item.id == id),
           };
-          window.scrollTo(0, 0); // Remonte au dessus en modifiant
+          window.scrollTo(0, 0);
         },
         updateOneById(id) {
           this.monsters.splice(
