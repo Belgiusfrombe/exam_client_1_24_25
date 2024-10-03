@@ -556,7 +556,6 @@
       },
       methods: {
         addOne() {
-          // Vérification si les champs ne sont pas remplis
           if (!this.inputMonster.name || !this.inputMonster.type || !this.inputMonster.description || this.inputMonster.attack <= 0 || this.inputMonster.health <= 0) {
               window.scrollTo(0, 0);
               this.showAlert("Veuillez remplir tous les champs correctement !", "alert");
@@ -576,20 +575,17 @@
           };
       },
       showAlert(message, className) {
-          // Création d'une div pour le message d'alerte
           const alertDiv = document.createElement("div");
-          alertDiv.className = className; // Ajout de la classe pour le style
-          alertDiv.textContent = message; // Définir le texte de l'alerte
+          alertDiv.className = className;
+          alertDiv.textContent = message;
 
-          // Ajouter la div au corps du document ou à un élément spécifique
           document.body.appendChild(alertDiv);
 
-          // Style de la div
           alertDiv.style.position = "fixed";
           alertDiv.style.top = "20px";
           alertDiv.style.right = "20px";
-          alertDiv.style.backgroundColor = "red"; // Couleur d'arrière-plan
-          alertDiv.style.color = "white"; // Couleur du texte
+          alertDiv.style.backgroundColor = "red";
+          alertDiv.style.color = "white";
           alertDiv.style.padding = "10px 20px";
           alertDiv.style.borderRadius = "5px";
           alertDiv.style.zIndex = "1000";
@@ -597,10 +593,10 @@
 
           // Masquer l'alerte après 3 secondes
           setTimeout(() => {
-              alertDiv.style.opacity = "0"; // Transition vers l'opacité
+              alertDiv.style.opacity = "0";
               setTimeout(() => {
-                  document.body.removeChild(alertDiv); // Supprimer l'alerte du DOM
-              }, 500); // Attendre la fin de la transition
+                  document.body.removeChild(alertDiv);
+              }, 500);
           }, 3000);
       },
 
