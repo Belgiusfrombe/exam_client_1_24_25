@@ -54,9 +54,9 @@ Détails : Lorsqu’un utilisateur clique sur "Supprimer", supprimer le monstre 
     Objectif : Implémenter la fonctionnalité de l'onglet "Filtres", permettant à l’utilisateur de basculer entre l’ajout de monstres et les filtres.
     Détails : Utiliser une propriété isFiltersTabActive pour afficher ou masquer l'onglet correspondant via des directives conditionnelles (utiliser les classes css déjà présentes pour l'onglet ajout).
 
-9. Recherche et filtrage des monstres par nom ou type
-Nom de l’issue : Recherche et filtrage des monstres
-Nom du commit : feat: implement search and filter functionality for monsters
-Objectif : Filtrer les monstres affichés en fonction de la recherche par nom ou type.
-Computed : filteredMonsters()
-Détails : Utiliser la propriété searchQuery pour filtrer les monstres dont le nom ou le type contient la chaîne de recherche. SearchQuery devrait être un objet littéral avec une propriété par filtre ayant chacune une valeur par défaut
+    9. Recherche et filtrage des monstres par nom ou type
+    Nom de l’issue : Recherche et filtrage des monstres
+    Nom du commit : feat: implement search and filter functionality for monsters
+    Objectif : Filtrer les monstres affichés en fonction de la recherche par nom ou type.
+    Computed : filteredMonsters()
+    Détails : Utiliser la propriété searchQuery pour filtrer les monstres dont le nom ou le type contient la chaîne de recherche. SearchQuery devrait être un objet littéral avec une propriété par filtre ayant chacune une valeur par défaut
