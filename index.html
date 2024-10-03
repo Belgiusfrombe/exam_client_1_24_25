@@ -181,21 +181,21 @@
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block mb-2">PV Min</label>
-              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Min PV" v-model="searchQuery.healthMin" />
+              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Min PV" />
             </div>
             <div>
               <label class="block mb-2">PV Max</label>
-              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Max PV" v-model="searchQuery.healthMax" />
+              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Max PV" />
             </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block mb-2">Attaque Min</label>
-              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Min Attaque" v-model="searchQuery.attackMin" />
+              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Min Attaque" />
             </div>
             <div>
               <label class="block mb-2">Attaque Max</label>
-              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Max Attaque" v-model="searchQuery.attackMax" />
+              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Max Attaque"" />
             </div>
           </div>
           <div>
@@ -544,16 +544,8 @@
             // Vérifie le type
             const matchesType = this.searchQuery.type ? monster.type === this.searchQuery.type : true;
 
-            // Vérifie les points de vie (PV)
-            const matchesHealthMin = this.searchQuery.healthMin !== null ? monster.health >= this.searchQuery.healthMin : true;
-            const matchesHealthMax = this.searchQuery.healthMax !== null ? monster.health <= this.searchQuery.healthMax : true;
-
-            // Vérifie l'attaque
-            const matchesAttackMin = this.searchQuery.attackMin !== null ? monster.attack >= this.searchQuery.attackMin : true;
-            const matchesAttackMax = this.searchQuery.attackMax !== null ? monster.attack <= this.searchQuery.attackMax : true;
-
             // Combine toutes les conditions
-            return matchesName && matchesType && matchesHealthMin && matchesHealthMax && matchesAttackMin && matchesAttackMax;
+            return matchesName && matchesType;
           });
         },
           sortedMonsters() {
@@ -564,19 +556,53 @@
       },
       methods: {
         addOne() {
+          // Vérification si les champs ne sont pas remplis
+          if (!this.inputMonster.name || !this.inputMonster.type || !this.inputMonster.description || this.inputMonster.attack <= 0 || this.inputMonster.health <= 0) {
+              this.showAlert("Veuillez remplir tous les champs correctement !", "alert");
+              return;
+          }
           this.inputMonster.id = Date.now();
           this.monsters.push({
-            ...this.inputMonster
+              ...this.inputMonster
           });
           this.inputMonster = {
-            id: null,
-            name: "",
-            type: "",
-            description: "",
-            attack: 0,
-            health: 0
+              id: null,
+              name: "",
+              type: "",
+              description: "",
+              attack: 0,
+              health: 0
           };
-        },
+      },
+      showAlert(message, className) {
+          // Création d'une div pour le message d'alerte
+          const alertDiv = document.createElement("div");
+          alertDiv.className = className; // Ajout de la classe pour le style
+          alertDiv.textContent = message; // Définir le texte de l'alerte
+
+          // Ajouter la div au corps du document ou à un élément spécifique
+          document.body.appendChild(alertDiv);
+
+          // Style de la div
+          alertDiv.style.position = "fixed";
+          alertDiv.style.top = "20px";
+          alertDiv.style.right = "20px";
+          alertDiv.style.backgroundColor = "red"; // Couleur d'arrière-plan
+          alertDiv.style.color = "white"; // Couleur du texte
+          alertDiv.style.padding = "10px 20px";
+          alertDiv.style.borderRadius = "5px";
+          alertDiv.style.zIndex = "1000";
+          alertDiv.style.transition = "opacity 0.5s";
+
+          // Masquer l'alerte après 3 secondes
+          setTimeout(() => {
+              alertDiv.style.opacity = "0"; // Transition vers l'opacité
+              setTimeout(() => {
+                  document.body.removeChild(alertDiv); // Supprimer l'alerte du DOM
+              }, 500); // Attendre la fin de la transition
+          }, 3000);
+      },
+
         deleteOneById(id) {
           this.monsters.splice(
             this.monsters.findIndex((item) => item.id == id),
