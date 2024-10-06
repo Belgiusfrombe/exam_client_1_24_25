@@ -181,21 +181,21 @@
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block mb-2">PV Min</label>
-              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Min PV" />
+              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Min PV" v-model="searchQuery.healthMin" />
             </div>
             <div>
               <label class="block mb-2">PV Max</label>
-              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Max PV" />
+              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Max PV" v-model="searchQuery.healthMax" />
             </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block mb-2">Attaque Min</label>
-              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Min Attaque" />
+              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Min Attaque" v-model="searchQuery.attackMin" />
             </div>
             <div>
               <label class="block mb-2">Attaque Max</label>
-              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Max Attaque"" />
+              <input type="number" class="w-full p-2 bg-gray-800 text-white rounded" placeholder="Max Attaque" v-model="searchQuery.attackMax" />
             </div>
           </div>
           <div>
